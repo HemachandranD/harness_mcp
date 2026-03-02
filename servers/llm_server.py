@@ -1,4 +1,6 @@
+from typing import Annotated
 from mcp.server.fastmcp import FastMCP
+from pydantic import Field
 from ollama import Client
 import ollama
 import os
@@ -9,8 +11,11 @@ load_dotenv()
 mcp = FastMCP(name="Private_LLM")
 
 @mcp.tool()
-def private_llm(context: str, instructions: str, offline_mode: bool = True) -> str:
-
+def private_llm(
+    context: Annotated[str, Field(description="The context or data to analyze, summarize, or process")],
+    instructions: Annotated[str, Field(description="Specific instructions for how the LLM should process the context")],
+    offline_mode: Annotated[bool, Field(description="If true, uses the local Ollama model. If false, uses the cloud-hosted Ollama model.")] = True,
+) -> str:
     """
     Generates a response using a local LLM based on specific instructions and context provided.
     Useful for Analyzing raw response, summarizing logs, extracting entities, or formatting raw data.

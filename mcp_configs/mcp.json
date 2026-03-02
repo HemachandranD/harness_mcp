@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+    "private-llm": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "run",
+        "servers/llm_server.py"
+      ],
+      "env": {
+        "OFFLINE_LLM": "llama3",
+        "ONLINE_LLM": "qwen3-coder-next:cloud"
+      }
+    },
+    "private-ai-assistant": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "run",
+        "servers/agent_server.py"
+      ],
+      "env": {
+        "OFFLINE_LLM": "llama3"
+      }
+    }
+  },
+  "servers": {
+    "private-llm": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "run",
+        "servers/llm_server.py"
+      ],
+      "env": {
+        "OFFLINE_LLM": "llama3",
+        "ONLINE_LLM": "qwen3-coder-next:cloud"
+      }
+    },
+    "private-ai-assistant": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "run",
+        "servers/agent_server.py"
+      ],
+      "env": {
+        "OFFLINE_LLM": "llama3"
+      }
+    }
+  }
+}

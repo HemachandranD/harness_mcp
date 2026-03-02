@@ -1,4 +1,6 @@
+from typing import Annotated
 from mcp.server.fastmcp import FastMCP
+from pydantic import Field
 import os
 from langchain_ollama import ChatOllama
 from langchain.agents import create_agent
@@ -12,7 +14,10 @@ provided or using tools provided.
 """
 
 @mcp.tool()
-def private_ai_assistant(instructions: str, context: str) -> str:
+def private_ai_assistant(
+    instructions: Annotated[str, Field(description="The user's instructions or query for the AI assistant to respond to")],
+    context: Annotated[str, Field(description="Additional context or information to help the assistant answer the query")],
+) -> str:
     """
     An AI Personal assistant that responds to user's instructions/query
     with all the available information or tools provided.
