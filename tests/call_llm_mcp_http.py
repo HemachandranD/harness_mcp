@@ -27,7 +27,7 @@ async def main():
 
             # Call the synthesize_response tool
             result = await session.call_tool(
-                "synthesize_response",
+                "private_llm",
                 arguments={
                     "raw_response": "The server returned 200 OK with 150 records processed in 2.3 seconds.",
                     "instructions": "Summarize this in one sentence.",
