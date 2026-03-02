@@ -6,33 +6,33 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-mcp = FastMCP(name="LocalLLM")
+mcp = FastMCP(name="Private_LLM")
 
 @mcp.tool()
-def synthesize_response(raw_response: str, instructions: str, offline_mode: bool = False) -> str:
+def private_llm(context: str, instructions: str, offline_mode: bool = True) -> str:
 
     """
-    Analyzes raw response using a local LLM based on specific instructions.
+    Generates a response using a local LLM based on specific instructions and context provided.
     Useful for Analyzing raw response, summarizing logs, extracting entities, or formatting raw data.
     """
     try:
 
         prompt = f"""
-        Follow the instructions:\n{instructions}\n\nResponse to synthesize:\n{raw_response}
+        Follow the instructions:\n{instructions}\n\nContext:\n{context}
         """
 
         if offline_mode:
             client = ollama
-            model = "llama3"
+            model = os.environ.get("OFFLINE_LLM")
         else:
             client = Client(
                 host="https://ollama.com",
                 headers={'Authorization': 'Bearer ' + os.environ.get('OLLAMA_API_KEY')}
             )
-            model = "qwen3-coder-next:cloud"
+            model = os.environ.get("ONLINE_LLM")
 
         messages = [
-            {"role": "system", "content": "You are a helpful assistant that synthesizes responses from a raw response and instructions."},
+            {"role": "system", "content": "You are a helpful assistant that generates a response using a local LLM based on specific instructions and context provided."},
             {"role": "user", "content": prompt}
         ]
 
