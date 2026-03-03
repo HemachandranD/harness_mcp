@@ -4,7 +4,7 @@
       "command": "uv",
       "args": [
         "--directory",
-        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "C:/OneDrive/Documents/Github/harness_mcp",
         "run",
         "servers/llm_server.py"
       ],
@@ -17,7 +17,7 @@
       "command": "uv",
       "args": [
         "--directory",
-        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "C:/OneDrive/Documents/Github/harness_mcp",
         "run",
         "servers/agent_server.py"
       ],
@@ -32,7 +32,7 @@
       "command": "uv",
       "args": [
         "--directory",
-        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "C:/OneDrive/Documents/Github/harness_mcp",
         "run",
         "servers/llm_server.py"
       ],
@@ -46,7 +46,7 @@
       "command": "uv",
       "args": [
         "--directory",
-        "C:/OneDrive/OneDrive - Tredence/Documents/Github/harness_mcp",
+        "C:/OneDrive/Documents/Github/harness_mcp",
         "run",
         "servers/agent_server.py"
       ],
